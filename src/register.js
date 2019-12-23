@@ -3,19 +3,30 @@ import { Button, Card, Form, Input } from "semantic-ui-react";
 
 import "./login.css";
 
-function Login() {
+function SignUp() {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmedPassword, setConfirmedPassword] = useState("");
 
-  const onLoginPressed = () => {
+  const onSignUpPressed = () => {
     alert(`${email}, ${password}`);
   };
 
   return (
-    <div className="login">
-      <h1>Login</h1>
+    <div className="sign-up">
+      <h1>Sign Up</h1>
       <Card>
         <Form>
+          <Form.Field>
+            <Input
+              type="text"
+              name="name"
+              value={name}
+              placeholder="Enter your name"
+              onChange={e => setName(e.target.value)}
+            />
+          </Form.Field>
           <Form.Field>
             <Input
               type="text"
@@ -35,8 +46,17 @@ function Login() {
             />
           </Form.Field>
           <Form.Field>
-            <Button onClick={onLoginPressed} className="login__form__button">
-              Login
+            <Input
+              type="password"
+              name="c-password"
+              placeholder="Enter your password again"
+              value={confirmedPassword}
+              onChange={e => setConfirmedPassword(e.target.value)}
+            />
+          </Form.Field>
+          <Form.Field>
+            <Button onClick={onSignUpPressed} className="login__form__button">
+              Sign Up
             </Button>
           </Form.Field>
         </Form>
@@ -45,4 +65,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default SignUp;
